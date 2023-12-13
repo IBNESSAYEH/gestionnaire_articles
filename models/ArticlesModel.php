@@ -1,95 +1,23 @@
 <?php 
-
-Class ArticlesModel{
+require 'connections.php';
+Class ArticlesModel extends Connections {
     
 
-private $id;	
-private $titre;	
-private $contenu;	
-private $date_de_creation;	
-private $user_id;
+    public function createArticle($titre,	$contenu,	$date_de_creation,	$user_id){
+        $db = $this->connect();
+        if($db === null){
+            return ;
+        }
+        $stmt = $db->prepare("INSERT INTO article (titre,	contenu,	date_de_creation,	user_id	)
+  VALUES (:titre,	:contenu,	:date_de_creation,	:user_id)");
+        $stmt->bindParam(':titre', $titre);
+        $stmt->bindParam(':contenu', $contenu);
+        $stmt->bindParam(':date_de_creation', $date_de_creation);
+        $stmt->bindParam(':user_id', $user_id);
 
-    /**
-     * @return mixed
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * @param mixed $id
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getTitre()
-    {
-        return $this->titre;
-    }
-
-    /**
-     * @param mixed $titre
-     */
-    public function setTitre($titre)
-    {
-        $this->titre = $titre;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getContenu()
-    {
-        return $this->contenu;
-    }
-
-    /**
-     * @param mixed $contenu
-     */
-    public function setContenu($contenu)
-    {
-        $this->contenu = $contenu;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getDateDeCreation()
-    {
-        return $this->date_de_creation;
-    }
-
-    /**
-     * @param mixed $date_de_creation
-     */
-    public function setDateDeCreation($date_de_creation)
-    {
-        $this->date_de_creation = $date_de_creation;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getUserId()
-    {
-        return $this->user_id;
-    }
-
-    /**
-     * @param mixed $user_id
-     */
-    public function setUserId($user_id)
-    {
-        $this->user_id = $user_id;
-    }
-    public function createArticle(){
-
+        $stmt->execute();
+        $stmt = null;
+        $db = null;
     }
 
 
