@@ -45,11 +45,11 @@
     <form>
       <div class="form-group">
         <label for="articleTitle">Title</label>
-        <input type="text" class="form-control" id="articleTitle" placeholder="Enter article title">
+        <input type="text" class="form-control" name="articleTitle" placeholder="Enter article title">
       </div>
       <div class="form-group">
         <label for="articleContent">Content</label>
-        <textarea class="form-control" id="articleContent" rows="5" placeholder="Enter article content"></textarea>
+        <textarea class="form-control" name="articleContent" rows="5" placeholder="Enter article content"></textarea>
       </div>
       <button type="submit" class="btn btn-primary">Submit</button>
     </form>
