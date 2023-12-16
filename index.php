@@ -1,3 +1,6 @@
+<?php
+require 'hundlers/getAllArticles.php'
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -42,17 +45,33 @@
     </div>
   </nav>
   <div class="container">
-    <form>
-      <div class="form-group">
-        <label for="articleTitle">Title</label>
-        <input type="text" class="form-control" name="articleTitle" placeholder="Enter article title">
-      </div>
-      <div class="form-group">
-        <label for="articleContent">Content</label>
-        <textarea class="form-control" name="articleContent" rows="5" placeholder="Enter article content"></textarea>
-      </div>
-      <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
+   
+
+
+  <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Handle</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">titre</th>
+      <td>contenu</td>
+      <td>date_de_creation</td>
+      <td>actions</td>
+    </tr>
+  </tbody>
+</table>
+
+ <?php include 'hundlers/getAllArticles.php' ?>
+
+
+
+
   </div>
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@1.16.1/dist/umd/popper.min.js"></script>
