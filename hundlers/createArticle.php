@@ -3,9 +3,10 @@ require '../models/ArticlesModel.php';
 
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
   
-    $titre = $_POST["articleTitle"]; 
-    $content = $_POST["articleContent"]; 
+
     $newArticle = new ArticlesModel();
-    $newArticle->createArticle($titre , $content);
+    $newArticle->setTitre($_POST["articleTitle"]) ;
+    $newArticle->setContenu($_POST["articleTitle"]) ;
+    $newArticle->createArticle();
 
 }

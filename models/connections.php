@@ -1,12 +1,12 @@
 <?php
-require '../config/config.php';
+
 class Connections {
 
 
 
-    protected function connect(){
+    protected static function connect(){
         try {
-            return new PDO(CONFIG['db'] , CONFIG['db_username'] , CONFIG['db_password']);
+            return new PDO("mysql:host=localhost;dbname=article", "root", "");
         }catch (PDOException $e){
                 return null ;
         }

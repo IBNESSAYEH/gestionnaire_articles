@@ -1,6 +1,4 @@
-<?php
-require 'hundlers/getAllArticles.php'
-?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -50,24 +48,22 @@ require 'hundlers/getAllArticles.php'
 
   <table class="table">
   <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
+  <tr>
       <th scope="row">titre</th>
       <td>contenu</td>
       <td>date_de_creation</td>
       <td>actions</td>
     </tr>
+  </thead>
+  <tbody>
+  <?php
+
+  include "hundlers/getAllArticles.php";
+  ?>
   </tbody>
 </table>
 
- <?php include 'hundlers/getAllArticles.php' ?>
+
 
 
 
