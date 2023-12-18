@@ -68,7 +68,7 @@ Class ArticlesModel extends Connections {
     }
     
     public function createArticle(){
-        $db = ArticlesModel::connect();
+        $db = self::connect();
         if($db == null){
             
             return ;
@@ -81,43 +81,43 @@ Class ArticlesModel extends Connections {
         $user_id = 1;
         $stmt->bindParam(':titre', $this->titre);
         $stmt->bindParam(':contenu', $this->contenu);
-        $stmt->bindParam(':date_de_creation', $this->date_de_creation);
-        $stmt->bindParam(':user_id', $this->user_id);
+        $stmt->bindParam(':date_de_creation', $date_de_creation);
+        $stmt->bindParam(':user_id', $user_id);
 
         $stmt->execute();
         $stmt = null;
         $db = null;
     }
 
-    public function updateArticle(){
-        $db = ArticlesModel::connect();
+    public  function updateArticle($id){
+        $db = self::connect();
         if($db === null){
             return ;
         }
-        $stmt = $db->prepare("UPDATE  article SET titre = :titre,	contenu = :contenu,	date_de_creation = :date_de_creation)");
+        $stmt = $db->prepare("UPDATE  article SET titre = :titre,	contenu = :contenu where Id = :id");
         $stmt->bindParam(':titre', $this->titre);
         $stmt->bindParam(':contenu', $this->contenu);
-        $stmt->bindParam(':date_de_creation', $this->date_de_creation);
+        $stmt->bindParam(':id', $id);
 
         $stmt->execute();
         $stmt = null;
         $db = null;
     }
 
-    public function deleteArticle(){
-        $db = ArticlesModel::connect();
+    public static function deleteArticle($id){
+        $db = self::connect();
         if($db === null){
             return ;
         }
         $stmt = $db->prepare("DELETE FROM  article WHERE id = :id");
-        $stmt->bindParam(':id', $this->id);
+        $stmt->bindParam(':id', $id);
 
         $stmt->execute();
         $stmt = null;
         $db = null;
     }
     public static  function getAllArticles(){
-        $db = ArticlesModel::connect();
+        $db = self::connect();
         if($db === null){
             return ;
         }
@@ -133,13 +133,4 @@ Class ArticlesModel extends Connections {
         return $data;
     }
 
-
-  
-  
-   
-
-
-
-
 }
-
